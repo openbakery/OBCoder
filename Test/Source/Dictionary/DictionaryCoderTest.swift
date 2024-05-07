@@ -67,7 +67,7 @@ class DictionaryCoderTest : XCTestCase {
 	func test_encode_point() {
 		let point = CGPoint(x: 10, y: 11)
 		coder.encode(point, forKey:"point")
-		if let pointDictionary = coder.dictionary["point"] as? [String: CGFloat] {
+		if let pointDictionary = coder.dictionary["point"] as? [String: Double] {
 			assertThat(pointDictionary, hasEntry("x", 10))
 			assertThat(pointDictionary, hasEntry("y", 11))
 		} else {
@@ -80,7 +80,7 @@ class DictionaryCoderTest : XCTestCase {
 		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
 		coder.encode(quadrilateral, forKey:"crop")
 		if let cropDictionary = coder.dictionary["crop"] as? [String: Any] {
-			if let topLeft = cropDictionary["topLeft"] as? [String: CGFloat] {
+			if let topLeft = cropDictionary["topLeft"] as? [String: Double] {
 				assertThat(topLeft, hasEntry("x", 1))
 				assertThat(topLeft, hasEntry("y", 1))
 			} else {
@@ -120,7 +120,7 @@ class DictionaryCoderTest : XCTestCase {
 		if let value = coder.dictionary["array"] as? [Any] {
 
 			if let dictionary = value.first as? [String: Any] {
-				if let topLeft = dictionary["topLeft"] as? [String: CGFloat] {
+				if let topLeft = dictionary["topLeft"] as? [String: Double] {
 					assertThat(topLeft, hasEntry("x", 1))
 					assertThat(topLeft, hasEntry("y", 1))
 				} else {

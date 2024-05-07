@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftHamcrest",
+        "repositoryURL": "https://github.com/nschum/SwiftHamcrest/",
+        "state": {
+          "branch": null,
+          "revision": "8c679c859fd5e12b83aea68a51045b0a11dfddef",
+          "version": "2.2.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

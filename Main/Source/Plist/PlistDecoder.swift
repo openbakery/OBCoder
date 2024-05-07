@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import UIKit
 
 open class PlistDecoder: OBCoder.Decoder {
 
