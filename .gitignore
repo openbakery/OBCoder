@@ -1,0 +1,17 @@
+localisation.json
+.gradle*
+Carthage/
+idea
+build/
+.build/
+
+OBCoder.xcodeproj/project.xcworkspace/
+OBCoder.xcodeproj/xcuserdata/
+
+.teamcity/.idea
+.teamcity/OBFoundation_dsl.iml
+.teamcity/target/
+
+.DS_Store
+.idea
+
