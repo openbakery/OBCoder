@@ -1,0 +1,659 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A71B32322BEA34BD00BFA26D /* OBCoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71B32292BEA34BD00BFA26D /* OBCoder.framework */; };
+		A71B32462BEA352000BFA26D /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32432BEA352000BFA26D /* Decoder.swift */; };
+		A71B32472BEA352000BFA26D /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32442BEA352000BFA26D /* Encodable.swift */; };
+		A71B32482BEA352000BFA26D /* Coder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32452BEA352000BFA26D /* Coder.swift */; };
+		A71B324C2BEA352E00BFA26D /* JSONCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B324A2BEA352E00BFA26D /* JSONCoder.swift */; };
+		A71B324D2BEA352E00BFA26D /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B324B2BEA352E00BFA26D /* JSONDecoder.swift */; };
+		A71B32522BEA353C00BFA26D /* DictionaryCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B324F2BEA353C00BFA26D /* DictionaryCoder.swift */; };
+		A71B32532BEA353C00BFA26D /* DictionaryDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32502BEA353C00BFA26D /* DictionaryDecoder.swift */; };
+		A71B32542BEA353C00BFA26D /* EncodableToDictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32512BEA353C00BFA26D /* EncodableToDictionaryExtension.swift */; };
+		A71B32582BEA354B00BFA26D /* PlistDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32562BEA354B00BFA26D /* PlistDecoder.swift */; };
+		A71B32592BEA354B00BFA26D /* PlistCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32572BEA354B00BFA26D /* PlistCoder.swift */; };
+		A71B325B2BEA35D200BFA26D /* SimpleEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B325A2BEA35D200BFA26D /* SimpleEncodable.swift */; };
+		A71B32612BEA36E700BFA26D /* EncodableToDictionaryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B325E2BEA36E700BFA26D /* EncodableToDictionaryTest.swift */; };
+		A71B32622BEA36E700BFA26D /* DictionaryDecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B325F2BEA36E700BFA26D /* DictionaryDecoderTest.swift */; };
+		A71B32632BEA36E700BFA26D /* DictionaryCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32602BEA36E700BFA26D /* DictionaryCoderTest.swift */; };
+		A71B32692BEA375000BFA26D /* SwiftHamcrest in Frameworks */ = {isa = PBXBuildFile; productRef = A71B32682BEA375000BFA26D /* SwiftHamcrest */; };
+		A71B326C2BEA37F100BFA26D /* DateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B326B2BEA37F100BFA26D /* DateBuilder.swift */; };
+		A71B326E2BEA383700BFA26D /* Quadrilateral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B326D2BEA383700BFA26D /* Quadrilateral.swift */; };
+		A71B32722BEA390C00BFA26D /* JSONDecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32702BEA390C00BFA26D /* JSONDecoderTest.swift */; };
+		A71B32732BEA390C00BFA26D /* JSONCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32712BEA390C00BFA26D /* JSONCoderTest.swift */; };
+		A71B32782BEA396800BFA26D /* PlistCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32752BEA396800BFA26D /* PlistCoderTest.swift */; };
+		A71B32792BEA396800BFA26D /* PlistDecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32762BEA396800BFA26D /* PlistDecoderTest.swift */; };
+		A71B327A2BEA396800BFA26D /* PlistCoder_Base_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32772BEA396800BFA26D /* PlistCoder_Base_Test.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A71B32332BEA34BD00BFA26D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A71B32202BEA34BD00BFA26D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A71B32282BEA34BD00BFA26D;
+			remoteInfo = OBCoder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A71B32292BEA34BD00BFA26D /* OBCoder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OBCoder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A71B32312BEA34BD00BFA26D /* OBCoderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OBCoderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A71B32432BEA352000BFA26D /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		A71B32442BEA352000BFA26D /* Encodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		A71B32452BEA352000BFA26D /* Coder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coder.swift; sourceTree = "<group>"; };
+		A71B324A2BEA352E00BFA26D /* JSONCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCoder.swift; sourceTree = "<group>"; };
+		A71B324B2BEA352E00BFA26D /* JSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		A71B324F2BEA353C00BFA26D /* DictionaryCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryCoder.swift; sourceTree = "<group>"; };
+		A71B32502BEA353C00BFA26D /* DictionaryDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryDecoder.swift; sourceTree = "<group>"; };
+		A71B32512BEA353C00BFA26D /* EncodableToDictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodableToDictionaryExtension.swift; sourceTree = "<group>"; };
+		A71B32562BEA354B00BFA26D /* PlistDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistDecoder.swift; sourceTree = "<group>"; };
+		A71B32572BEA354B00BFA26D /* PlistCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistCoder.swift; sourceTree = "<group>"; };
+		A71B325A2BEA35D200BFA26D /* SimpleEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleEncodable.swift; sourceTree = "<group>"; };
+		A71B325C2BEA36C200BFA26D /* OBCoder.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = OBCoder.xctestplan; sourceTree = "<group>"; };
+		A71B325E2BEA36E700BFA26D /* EncodableToDictionaryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodableToDictionaryTest.swift; sourceTree = "<group>"; };
+		A71B325F2BEA36E700BFA26D /* DictionaryDecoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryDecoderTest.swift; sourceTree = "<group>"; };
+		A71B32602BEA36E700BFA26D /* DictionaryCoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryCoderTest.swift; sourceTree = "<group>"; };
+		A71B326B2BEA37F100BFA26D /* DateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBuilder.swift; sourceTree = "<group>"; };
+		A71B326D2BEA383700BFA26D /* Quadrilateral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadrilateral.swift; sourceTree = "<group>"; };
+		A71B32702BEA390C00BFA26D /* JSONDecoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecoderTest.swift; sourceTree = "<group>"; };
+		A71B32712BEA390C00BFA26D /* JSONCoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCoderTest.swift; sourceTree = "<group>"; };
+		A71B32752BEA396800BFA26D /* PlistCoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistCoderTest.swift; sourceTree = "<group>"; };
+		A71B32762BEA396800BFA26D /* PlistDecoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistDecoderTest.swift; sourceTree = "<group>"; };
+		A71B32772BEA396800BFA26D /* PlistCoder_Base_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistCoder_Base_Test.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A71B32262BEA34BD00BFA26D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A71B322E2BEA34BD00BFA26D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71B32322BEA34BD00BFA26D /* OBCoder.framework in Frameworks */,
+				A71B32692BEA375000BFA26D /* SwiftHamcrest in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A71B321F2BEA34BD00BFA26D = {
+			isa = PBXGroup;
+			children = (
+				A71B322B2BEA34BD00BFA26D /* Main */,
+				A71B32352BEA34BD00BFA26D /* Test */,
+				A71B322A2BEA34BD00BFA26D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A71B322A2BEA34BD00BFA26D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A71B32292BEA34BD00BFA26D /* OBCoder.framework */,
+				A71B32312BEA34BD00BFA26D /* OBCoderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A71B322B2BEA34BD00BFA26D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A71B32412BEA34EE00BFA26D /* Source */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A71B32352BEA34BD00BFA26D /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				A71B32422BEA34F800BFA26D /* Source */,
+				A71B325C2BEA36C200BFA26D /* OBCoder.xctestplan */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		A71B32412BEA34EE00BFA26D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A71B324E2BEA353000BFA26D /* Dictionary */,
+				A71B32492BEA352300BFA26D /* JSON */,
+				A71B32552BEA354200BFA26D /* Plist */,
+				A71B32452BEA352000BFA26D /* Coder.swift */,
+				A71B32432BEA352000BFA26D /* Decoder.swift */,
+				A71B32442BEA352000BFA26D /* Encodable.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		A71B32422BEA34F800BFA26D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A71B325D2BEA36DE00BFA26D /* Dictionary */,
+				A71B326A2BEA37E600BFA26D /* Helper */,
+				A71B326F2BEA38FF00BFA26D /* JSON */,
+				A71B32742BEA395F00BFA26D /* Plist */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		A71B32492BEA352300BFA26D /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				A71B324A2BEA352E00BFA26D /* JSONCoder.swift */,
+				A71B324B2BEA352E00BFA26D /* JSONDecoder.swift */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		A71B324E2BEA353000BFA26D /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				A71B324F2BEA353C00BFA26D /* DictionaryCoder.swift */,
+				A71B32502BEA353C00BFA26D /* DictionaryDecoder.swift */,
+				A71B32512BEA353C00BFA26D /* EncodableToDictionaryExtension.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		A71B32552BEA354200BFA26D /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				A71B32572BEA354B00BFA26D /* PlistCoder.swift */,
+				A71B32562BEA354B00BFA26D /* PlistDecoder.swift */,
+			);
+			path = Plist;
+			sourceTree = "<group>";
+		};
+		A71B325D2BEA36DE00BFA26D /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				A71B32602BEA36E700BFA26D /* DictionaryCoderTest.swift */,
+				A71B325F2BEA36E700BFA26D /* DictionaryDecoderTest.swift */,
+				A71B325E2BEA36E700BFA26D /* EncodableToDictionaryTest.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		A71B326A2BEA37E600BFA26D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A71B325A2BEA35D200BFA26D /* SimpleEncodable.swift */,
+				A71B326B2BEA37F100BFA26D /* DateBuilder.swift */,
+				A71B326D2BEA383700BFA26D /* Quadrilateral.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		A71B326F2BEA38FF00BFA26D /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				A71B32712BEA390C00BFA26D /* JSONCoderTest.swift */,
+				A71B32702BEA390C00BFA26D /* JSONDecoderTest.swift */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		A71B32742BEA395F00BFA26D /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				A71B32772BEA396800BFA26D /* PlistCoder_Base_Test.swift */,
+				A71B32752BEA396800BFA26D /* PlistCoderTest.swift */,
+				A71B32762BEA396800BFA26D /* PlistDecoderTest.swift */,
+			);
+			path = Plist;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A71B32242BEA34BD00BFA26D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A71B32282BEA34BD00BFA26D /* OBCoder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A71B323B2BEA34BD00BFA26D /* Build configuration list for PBXNativeTarget "OBCoder" */;
+			buildPhases = (
+				A71B32242BEA34BD00BFA26D /* Headers */,
+				A71B32252BEA34BD00BFA26D /* Sources */,
+				A71B32262BEA34BD00BFA26D /* Frameworks */,
+				A71B32272BEA34BD00BFA26D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OBCoder;
+			productName = OBCoder;
+			productReference = A71B32292BEA34BD00BFA26D /* OBCoder.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A71B32302BEA34BD00BFA26D /* OBCoderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A71B323E2BEA34BD00BFA26D /* Build configuration list for PBXNativeTarget "OBCoderTests" */;
+			buildPhases = (
+				A71B322D2BEA34BD00BFA26D /* Sources */,
+				A71B322E2BEA34BD00BFA26D /* Frameworks */,
+				A71B322F2BEA34BD00BFA26D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A71B32342BEA34BD00BFA26D /* PBXTargetDependency */,
+			);
+			name = OBCoderTests;
+			packageProductDependencies = (
+				A71B32682BEA375000BFA26D /* SwiftHamcrest */,
+			);
+			productName = OBCoderTests;
+			productReference = A71B32312BEA34BD00BFA26D /* OBCoderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A71B32202BEA34BD00BFA26D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					A71B32282BEA34BD00BFA26D = {
+						CreatedOnToolsVersion = 15.3;
+						LastSwiftMigration = 1530;
+					};
+					A71B32302BEA34BD00BFA26D = {
+						CreatedOnToolsVersion = 15.3;
+						LastSwiftMigration = 1530;
+					};
+				};
+			};
+			buildConfigurationList = A71B32232BEA34BD00BFA26D /* Build configuration list for PBXProject "OBCoder" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A71B321F2BEA34BD00BFA26D;
+			packageReferences = (
+				A71B32672BEA375000BFA26D /* XCRemoteSwiftPackageReference "SwiftHamcrest" */,
+			);
+			productRefGroup = A71B322A2BEA34BD00BFA26D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A71B32282BEA34BD00BFA26D /* OBCoder */,
+				A71B32302BEA34BD00BFA26D /* OBCoderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A71B32272BEA34BD00BFA26D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A71B322F2BEA34BD00BFA26D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A71B32252BEA34BD00BFA26D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71B32532BEA353C00BFA26D /* DictionaryDecoder.swift in Sources */,
+				A71B32462BEA352000BFA26D /* Decoder.swift in Sources */,
+				A71B32542BEA353C00BFA26D /* EncodableToDictionaryExtension.swift in Sources */,
+				A71B324C2BEA352E00BFA26D /* JSONCoder.swift in Sources */,
+				A71B32592BEA354B00BFA26D /* PlistCoder.swift in Sources */,
+				A71B324D2BEA352E00BFA26D /* JSONDecoder.swift in Sources */,
+				A71B32522BEA353C00BFA26D /* DictionaryCoder.swift in Sources */,
+				A71B32482BEA352000BFA26D /* Coder.swift in Sources */,
+				A71B32582BEA354B00BFA26D /* PlistDecoder.swift in Sources */,
+				A71B32472BEA352000BFA26D /* Encodable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A71B322D2BEA34BD00BFA26D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71B32622BEA36E700BFA26D /* DictionaryDecoderTest.swift in Sources */,
+				A71B326E2BEA383700BFA26D /* Quadrilateral.swift in Sources */,
+				A71B32612BEA36E700BFA26D /* EncodableToDictionaryTest.swift in Sources */,
+				A71B326C2BEA37F100BFA26D /* DateBuilder.swift in Sources */,
+				A71B32782BEA396800BFA26D /* PlistCoderTest.swift in Sources */,
+				A71B32722BEA390C00BFA26D /* JSONDecoderTest.swift in Sources */,
+				A71B327A2BEA396800BFA26D /* PlistCoder_Base_Test.swift in Sources */,
+				A71B32732BEA390C00BFA26D /* JSONCoderTest.swift in Sources */,
+				A71B32792BEA396800BFA26D /* PlistDecoderTest.swift in Sources */,
+				A71B325B2BEA35D200BFA26D /* SimpleEncodable.swift in Sources */,
+				A71B32632BEA36E700BFA26D /* DictionaryCoderTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A71B32342BEA34BD00BFA26D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A71B32282BEA34BD00BFA26D /* OBCoder */;
+			targetProxy = A71B32332BEA34BD00BFA26D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A71B32392BEA34BD00BFA26D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A71B323A2BEA34BD00BFA26D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A71B323C2BEA34BD00BFA26D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = ED5DV56QPQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.OBCoder;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A71B323D2BEA34BD00BFA26D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = ED5DV56QPQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.OBCoder;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A71B323F2BEA34BD00BFA26D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ED5DV56QPQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.OBCoderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A71B32402BEA34BD00BFA26D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ED5DV56QPQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.OBCoderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A71B32232BEA34BD00BFA26D /* Build configuration list for PBXProject "OBCoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A71B32392BEA34BD00BFA26D /* Debug */,
+				A71B323A2BEA34BD00BFA26D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A71B323B2BEA34BD00BFA26D /* Build configuration list for PBXNativeTarget "OBCoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A71B323C2BEA34BD00BFA26D /* Debug */,
+				A71B323D2BEA34BD00BFA26D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A71B323E2BEA34BD00BFA26D /* Build configuration list for PBXNativeTarget "OBCoderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A71B323F2BEA34BD00BFA26D /* Debug */,
+				A71B32402BEA34BD00BFA26D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A71B32672BEA375000BFA26D /* XCRemoteSwiftPackageReference "SwiftHamcrest" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nschum/SwiftHamcrest";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A71B32682BEA375000BFA26D /* SwiftHamcrest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A71B32672BEA375000BFA26D /* XCRemoteSwiftPackageReference "SwiftHamcrest" */;
+			productName = SwiftHamcrest;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A71B32202BEA34BD00BFA26D /* Project object */;
+}

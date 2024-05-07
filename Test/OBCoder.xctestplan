@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "BB391494-97F5-4039-9E14-2912984CEB6F",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:OBCoder.xcodeproj",
+        "identifier" : "A71B32302BEA34BD00BFA26D",
+        "name" : "OBCoderTests"
+      }
+    }
+  ],
+  "version" : 1
+}
