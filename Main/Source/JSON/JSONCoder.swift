@@ -9,7 +9,7 @@ import Foundation
 open class JSONCoder : Coder {
 
 
-  var data = [String: AnyObject]()
+	var data: [String: Any]
 
   public var jsonString : String {
     get {
@@ -25,7 +25,8 @@ open class JSONCoder : Coder {
     }
   }
 
-  public init() {
+	public init(data: [String: Any] = [:]) {
+		self.data = data
   }
 
   public func encode(_ encodeable: Encodable) {
