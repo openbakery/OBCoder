@@ -222,7 +222,6 @@ class JSONDecoderTest : XCTestCase {
 	 "id": "1234"
 	}
  },
- "bar1": "asdf"
 }
 }
 """)
@@ -231,6 +230,47 @@ class JSONDecoderTest : XCTestCase {
 		assertThat(decoder.decoder(forKey: "foo"), presentAnd(instanceOf(OBCoder.JSONDecoder.self)))
 		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar"), presentAnd(instanceOf(OBCoder.JSONDecoder.self)))
 		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar")?.decoder(forKey:"baz")?.string(forKey: "id"), presentAnd(equalTo("1234")))
+
+	}
+
+	
+	func test_decoder_for_key_array() {
+		
+		// given
+		let decoder = OBCoder.JSONDecoder(jsonString: """
+{
+"foo": {
+ "bar": {
+	"baz": {
+	 "id": "1234"
+	}
+ },
+}
+}
+""")
+		
+		
+		assertThat(decoder.decoder(forKeyPath: ["foo", "bar", "baz"])?.string(forKey: "id"), presentAnd(equalTo("1234")))
+
+	}
+	
+	func test_decoder_for_KeyPath() {
+		
+		// given
+		let decoder = OBCoder.JSONDecoder(jsonString: """
+{
+"foo": {
+ "bar": {
+	"baz": {
+	 "id": "1234"
+	}
+ },
+}
+}
+""")
+		
+		
+		assertThat(decoder.decoder(forKeyPath: "foo", "bar", "baz")?.string(forKey: "id"), presentAnd(equalTo("1234")))
 
 	}
 

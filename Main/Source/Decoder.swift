@@ -41,6 +41,19 @@ public extension Decoder {
 		}
 		return nil
 	}
+	
+	func decoder(forKeyPath path: String...) -> Decoder? {
+		return self.decoder(forKeyPath: path)
+	}
+
+	func decoder(forKeyPath keyPath: [String]) -> Decoder? {
+		if let key = keyPath.first {
+			let result = self.decoder(forKey: key)
+			return result?.decoder(forKeyPath: Array(keyPath.dropFirst()))
+		}
+		return self
+	}
+	
 
 	func string(forKey key: String, default defaultValue: String) -> String {
 		if let result = self.string(forKey: key) {
