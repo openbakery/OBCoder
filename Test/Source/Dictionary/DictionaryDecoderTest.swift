@@ -172,4 +172,15 @@ class DictionaryDecoderTest : XCTestCase {
 		let expectedDate = DateBuilder.create(year: 2021, month: 10, day: 27, hour: 10, minute: 27)
 		assertThat(date, presentAnd(equalTo(expectedDate)))
 	}
+	
+	func test_decoder_for_key() {
+		// given
+		let decoder = DictionaryDecoder(dictionary: ["foo": [ "bar" : [ "baz": [ "id": "asdf" ]]]])
+		
+		// then
+		assertThat(decoder.decoder(forKey: "foo"), presentAnd(instanceOf(OBCoder.DictionaryDecoder.self)))
+		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar"), presentAnd(instanceOf(OBCoder.DictionaryDecoder.self)))
+		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar")?.decoder(forKey:"baz")?.string(forKey: "id"), presentAnd(equalTo("asdf")))
+
+	}
 }

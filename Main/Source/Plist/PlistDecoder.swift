@@ -6,6 +6,7 @@
 import Foundation
 
 open class PlistDecoder: OBCoder.Decoder {
+	
 
 	let dictionary: [String: Any]
 
@@ -63,12 +64,10 @@ open class PlistDecoder: OBCoder.Decoder {
 		return T(decoder: self)
 	}
 
-	public func decode<T>(forKey key: String, closure: (Decoder) -> T?) -> T? {
+	public func decoder(forKey key: String) -> (any Decoder)? {
 		if let value = dictionary[key] as? [String: AnyObject] {
-			let decoder = PlistDecoder(dictionary: value)
-			return closure(decoder)
+			return PlistDecoder(dictionary: value)
 		}
-
 		return nil
 	}
 

@@ -180,5 +180,58 @@ class JSONDecoderTest : XCTestCase {
 		assertThat(dictionary, presentAnd(instanceOf([String: Any].self)))
 		assertThat(dictionary?["foo"], presentAnd(instanceOfAnd(equalTo("bar"))))
 	}
+	
+	func test_decode_tree() {
+		
+		// given
+		let decoder = OBCoder.JSONDecoder(jsonString: """
+{ 
+	"foo": {
+		"bar": {
+			"baz": {
+				"id": "1234"
+			}
+		},
+		"bar1": "asdf"
+	}
+}
+""")
+		
+		
+		let value = decoder.decode(forKey: "foo") { coder1 in
+			coder1.decode(forKey: "bar") { coder2 in
+				coder2.decode(forKey: "baz") { coder3 in
+					return coder3.string(forKey: "id")
+				}
+			}
+		}
+		
+		assertThat(value, equalTo("1234"))
+
+	}
+
+
+	func test_decoder_for_key() {
+		
+		// given
+		let decoder = OBCoder.JSONDecoder(jsonString: """
+{
+"foo": {
+ "bar": {
+	"baz": {
+	 "id": "1234"
+	}
+ },
+ "bar1": "asdf"
+}
+}
+""")
+		
+		
+		assertThat(decoder.decoder(forKey: "foo"), presentAnd(instanceOf(OBCoder.JSONDecoder.self)))
+		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar"), presentAnd(instanceOf(OBCoder.JSONDecoder.self)))
+		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar")?.decoder(forKey:"baz")?.string(forKey: "id"), presentAnd(equalTo("1234")))
+
+	}
 
 }

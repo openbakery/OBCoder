@@ -24,14 +24,13 @@ open class DictionaryDecoder : Decoder {
 	}
 	
 	
-	public func decode<T>(forKey key: String, closure: DecodeClosure<T>) -> T? {
+	public func decoder(forKey key: String) -> Decoder? {
 		if let value = dictionary[key] as? [String : AnyObject]{
-			let decoder = DictionaryDecoder(dictionary:value)
-			return closure(decoder)
+			return DictionaryDecoder(dictionary:value)
 		}
 		return nil
 	}
-	
+
 	public func decodeArray<T>(forKey key: String, closure: DecodeClosure<T>) -> [T]? {
 		if let dataArray = dictionary[key] as? [[String : AnyObject]] {
 			var resultArray = [T]()

@@ -14,6 +14,7 @@ public protocol Decoder {
 	
 	func decode<T:Encodable>(type: T.Type) -> T?
 	func decode<T>(forKey key: String, closure: DecodeClosure<T>) -> T?
+	func decoder(forKey key: String) -> Decoder?
 	func decodeArray<T>(forKey key: String, closure: DecodeClosure<T>) -> [T]?
 	func string(forKey key: String) -> String?
 	func bool(forKey key: String) -> Bool?
@@ -33,6 +34,13 @@ public protocol Decoder {
 }
 
 public extension Decoder {
+	
+	func decode<T>(forKey key: String, closure: (Decoder) -> T?) -> T? {
+		if let decoder = self.decoder(forKey: key) {
+			return closure(decoder)
+		}
+		return nil
+	}
 
 	func string(forKey key: String, default defaultValue: String) -> String {
 		if let result = self.string(forKey: key) {

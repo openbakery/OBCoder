@@ -13,7 +13,6 @@ class PlistDecoderTest: PlistCoder_Base_Test {
 
 	func decoder(dictionary: [String: Any]) -> PlistDecoder? {
 		let plistString = self.plistString(data: dictionary)
-		NSLog("\(plistString)")
 		if let data = plistString.data(using: .utf8) {
 			return PlistDecoder(data: data)
 		}
@@ -205,6 +204,19 @@ class PlistDecoderTest: PlistCoder_Base_Test {
 		// then
 		assertThat(decoder.dictionary(forKey: "dictionary"), presentAnd(instanceOf([String: Any].self)))
 		assertThat(decoder.dictionary(forKey: "dictionary")?["Foo"], presentAnd(instanceOfAnd(equalTo("Bar"))))
+	}
+	
+	
+	func test_decoder_for_key() {
+		// given
+		
+		let decoder = PlistDecoder(dictionary: ["foo": [ "bar" : [ "baz": [ "id": "asdf" ]]]])
+		
+		// then
+		assertThat(decoder.decoder(forKey: "foo"), presentAnd(instanceOf(OBCoder.PlistDecoder.self)))
+		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar"), presentAnd(instanceOf(OBCoder.PlistDecoder.self)))
+		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar")?.decoder(forKey:"baz")?.string(forKey: "id"), presentAnd(equalTo("asdf")))
+
 	}
 
 }

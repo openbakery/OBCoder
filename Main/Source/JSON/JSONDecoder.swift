@@ -42,10 +42,10 @@ open class JSONDecoder : Decoder {
 	}
 
 
-	public func decode<T>(forKey key: String, closure: DecodeClosure<T>) -> T? {
+	public func decoder(forKey key: String) -> Decoder? {
 		if let value = data[key] as? [String : Any]{
 			let decoder = JSONDecoder(data:value)
-			return closure(decoder)
+			return decoder
 		}
 		return nil
 	}
