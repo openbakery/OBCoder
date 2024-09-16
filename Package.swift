@@ -12,7 +12,7 @@ let package = Package(
 	dependencies: [
 		.package(
 			url: "https://github.com/nschum/SwiftHamcrest/",
-			.upToNextMajor(from: "2.2.0")
+			.upToNextMajor(from: "2.3.0")
 		)
 	],
 	targets: [
