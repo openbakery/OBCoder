@@ -22,7 +22,6 @@
 		A71B32612BEA36E700BFA26D /* EncodableToDictionaryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B325E2BEA36E700BFA26D /* EncodableToDictionaryTest.swift */; };
 		A71B32622BEA36E700BFA26D /* DictionaryDecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B325F2BEA36E700BFA26D /* DictionaryDecoderTest.swift */; };
 		A71B32632BEA36E700BFA26D /* DictionaryCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32602BEA36E700BFA26D /* DictionaryCoderTest.swift */; };
-		A71B32692BEA375000BFA26D /* SwiftHamcrest in Frameworks */ = {isa = PBXBuildFile; productRef = A71B32682BEA375000BFA26D /* SwiftHamcrest */; };
 		A71B326C2BEA37F100BFA26D /* DateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B326B2BEA37F100BFA26D /* DateBuilder.swift */; };
 		A71B326E2BEA383700BFA26D /* Quadrilateral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B326D2BEA383700BFA26D /* Quadrilateral.swift */; };
 		A71B32722BEA390C00BFA26D /* JSONDecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32702BEA390C00BFA26D /* JSONDecoderTest.swift */; };
@@ -30,6 +29,7 @@
 		A71B32782BEA396800BFA26D /* PlistCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32752BEA396800BFA26D /* PlistCoderTest.swift */; };
 		A71B32792BEA396800BFA26D /* PlistDecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32762BEA396800BFA26D /* PlistDecoderTest.swift */; };
 		A71B327A2BEA396800BFA26D /* PlistCoder_Base_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32772BEA396800BFA26D /* PlistCoder_Base_Test.swift */; };
+		A743697F2C9C5B34001E81D7 /* Hamcrest.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A743697E2C9C5B34001E81D7 /* Hamcrest.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +67,7 @@
 		A71B32752BEA396800BFA26D /* PlistCoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistCoderTest.swift; sourceTree = "<group>"; };
 		A71B32762BEA396800BFA26D /* PlistDecoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistDecoderTest.swift; sourceTree = "<group>"; };
 		A71B32772BEA396800BFA26D /* PlistCoder_Base_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistCoder_Base_Test.swift; sourceTree = "<group>"; };
+		A743697E2C9C5B34001E81D7 /* Hamcrest.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Hamcrest.xcframework; path = Carthage/Build/Hamcrest.xcframework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A743697F2C9C5B34001E81D7 /* Hamcrest.xcframework in Frameworks */,
 				A71B32322BEA34BD00BFA26D /* OBCoder.framework in Frameworks */,
-				A71B32692BEA375000BFA26D /* SwiftHamcrest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +93,7 @@
 		A71B321F2BEA34BD00BFA26D = {
 			isa = PBXGroup;
 			children = (
+				A74369792C9C5A7D001E81D7 /* Frameworks */,
 				A71B322B2BEA34BD00BFA26D /* Main */,
 				A71B32352BEA34BD00BFA26D /* Test */,
 				A71B322A2BEA34BD00BFA26D /* Products */,
@@ -215,6 +217,14 @@
 			path = Plist;
 			sourceTree = "<group>";
 		};
+		A74369792C9C5A7D001E81D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A743697E2C9C5B34001E81D7 /* Hamcrest.xcframework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -261,7 +271,6 @@
 			);
 			name = OBCoderTests;
 			packageProductDependencies = (
-				A71B32682BEA375000BFA26D /* SwiftHamcrest */,
 			);
 			productName = OBCoderTests;
 			productReference = A71B32312BEA34BD00BFA26D /* OBCoderTests.xctest */;
@@ -297,7 +306,6 @@
 			);
 			mainGroup = A71B321F2BEA34BD00BFA26D;
 			packageReferences = (
-				A71B32672BEA375000BFA26D /* XCRemoteSwiftPackageReference "SwiftHamcrest" */,
 			);
 			productRefGroup = A71B322A2BEA34BD00BFA26D /* Products */;
 			projectDirPath = "";
@@ -635,25 +643,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A71B32672BEA375000BFA26D /* XCRemoteSwiftPackageReference "SwiftHamcrest" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nschum/SwiftHamcrest";
-			requirement = {
-				kind = exactVersion;
-				version = 2.2.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A71B32682BEA375000BFA26D /* SwiftHamcrest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A71B32672BEA375000BFA26D /* XCRemoteSwiftPackageReference "SwiftHamcrest" */;
-			productName = SwiftHamcrest;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A71B32202BEA34BD00BFA26D /* Project object */;
 }
