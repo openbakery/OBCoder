@@ -641,8 +641,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nschum/SwiftHamcrest";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.4;
+				kind = exactVersion;
+				version = 2.2.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
