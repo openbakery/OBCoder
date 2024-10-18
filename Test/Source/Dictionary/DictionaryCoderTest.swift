@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-import SwiftHamcrest
+import Hamcrest
 @testable import OBCoder
 
 class DictionaryCoderTest : XCTestCase {

@@ -5,7 +5,7 @@
 
 import Foundation
 import XCTest
-import SwiftHamcrest
+import Hamcrest
 @testable import OBCoder
 
 class PlistCoder_Base_Test: XCTestCase {

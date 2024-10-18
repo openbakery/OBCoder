@@ -22,7 +22,6 @@
 		A71B32612BEA36E700BFA26D /* EncodableToDictionaryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B325E2BEA36E700BFA26D /* EncodableToDictionaryTest.swift */; };
 		A71B32622BEA36E700BFA26D /* DictionaryDecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B325F2BEA36E700BFA26D /* DictionaryDecoderTest.swift */; };
 		A71B32632BEA36E700BFA26D /* DictionaryCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32602BEA36E700BFA26D /* DictionaryCoderTest.swift */; };
-		A71B32692BEA375000BFA26D /* SwiftHamcrest in Frameworks */ = {isa = PBXBuildFile; productRef = A71B32682BEA375000BFA26D /* SwiftHamcrest */; };
 		A71B326C2BEA37F100BFA26D /* DateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B326B2BEA37F100BFA26D /* DateBuilder.swift */; };
 		A71B326E2BEA383700BFA26D /* Quadrilateral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B326D2BEA383700BFA26D /* Quadrilateral.swift */; };
 		A71B32722BEA390C00BFA26D /* JSONDecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32702BEA390C00BFA26D /* JSONDecoderTest.swift */; };
@@ -30,6 +29,7 @@
 		A71B32782BEA396800BFA26D /* PlistCoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32752BEA396800BFA26D /* PlistCoderTest.swift */; };
 		A71B32792BEA396800BFA26D /* PlistDecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32762BEA396800BFA26D /* PlistDecoderTest.swift */; };
 		A71B327A2BEA396800BFA26D /* PlistCoder_Base_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71B32772BEA396800BFA26D /* PlistCoder_Base_Test.swift */; };
+		A75B749C2CC24F63000706AB /* Hamcrest in Frameworks */ = {isa = PBXBuildFile; productRef = A75B749B2CC24F63000706AB /* Hamcrest */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A71B32322BEA34BD00BFA26D /* OBCoder.framework in Frameworks */,
-				A71B32692BEA375000BFA26D /* SwiftHamcrest in Frameworks */,
+				A75B749C2CC24F63000706AB /* Hamcrest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +94,7 @@
 			children = (
 				A71B322B2BEA34BD00BFA26D /* Main */,
 				A71B32352BEA34BD00BFA26D /* Test */,
+				A75B749A2CC24F63000706AB /* Frameworks */,
 				A71B322A2BEA34BD00BFA26D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -215,6 +216,13 @@
 			path = Plist;
 			sourceTree = "<group>";
 		};
+		A75B749A2CC24F63000706AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -261,7 +269,7 @@
 			);
 			name = OBCoderTests;
 			packageProductDependencies = (
-				A71B32682BEA375000BFA26D /* SwiftHamcrest */,
+				A75B749B2CC24F63000706AB /* Hamcrest */,
 			);
 			productName = OBCoderTests;
 			productReference = A71B32312BEA34BD00BFA26D /* OBCoderTests.xctest */;
@@ -642,16 +650,16 @@
 			repositoryURL = "https://github.com/nschum/SwiftHamcrest";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.4;
+				minimumVersion = 2.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A71B32682BEA375000BFA26D /* SwiftHamcrest */ = {
+		A75B749B2CC24F63000706AB /* Hamcrest */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A71B32672BEA375000BFA26D /* XCRemoteSwiftPackageReference "SwiftHamcrest" */;
-			productName = SwiftHamcrest;
+			productName = Hamcrest;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
