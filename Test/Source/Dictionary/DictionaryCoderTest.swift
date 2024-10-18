@@ -178,4 +178,15 @@ class DictionaryCoderTest : XCTestCase {
 		assertThat(value, present())
 		assertThat(value, presentAnd(instanceOf(String.self, and:equalTo("2021-10-27T08:27:00Z"))))
 	}
+	
+	func test_encode_boolean() throws {
+		// given
+
+		// when
+		coder.encode(true, forKey: "bool")
+
+		// then
+		let value = coder.dictionary["bool"]
+		assertThat(value, presentAnd(instanceOfAnd(equalTo(true))))
+	}
 }

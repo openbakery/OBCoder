@@ -8,31 +8,31 @@ import XCTest
 import Hamcrest
 @testable import OBCoder
 
-class JSONDecoderTest : XCTestCase {
+class JSONDecoderTest: XCTestCase {
 
 	func test_decode_string() {
 		let decoder = JSONDecoder(jsonString: "{\"string\":\"Test\"}")
-		assertThat(decoder.string(forKey:"string"), presentAnd(equalTo("Test")))
+		assertThat(decoder.string(forKey: "string"), presentAnd(equalTo("Test")))
 	}
 
 	func test_decode_boolean() {
 		let decoder = JSONDecoder(jsonString: "{\"wasUploaded\": true }")
-		assertThat(decoder.bool(forKey:"wasUploaded"), presentAnd(equalTo(true)))
+		assertThat(decoder.bool(forKey: "wasUploaded"), presentAnd(equalTo(true)))
 	}
 
 	func test_decode_boolean_from_string() {
 		let decoder = JSONDecoder(jsonString: "{\"wasUploaded\": \"true\" }")
-		assertThat(decoder.bool(forKey:"wasUploaded"), presentAnd(equalTo(true)))
+		assertThat(decoder.bool(forKey: "wasUploaded"), presentAnd(equalTo(true)))
 	}
 
 	func test_decode_boolean_value_false() {
 		let decoder = JSONDecoder(jsonString: "{\"wasUploaded\": false }")
-		assertThat(decoder.bool(forKey:"wasUploaded"), presentAnd(equalTo(false)))
+		assertThat(decoder.bool(forKey: "wasUploaded"), presentAnd(equalTo(false)))
 	}
 
 	func test_decode_boolean_value_false_from_string() {
 		let decoder = JSONDecoder(jsonString: "{\"wasUploaded\": \"false\" }")
-		assertThat(decoder.bool(forKey:"wasUploaded"), presentAnd(equalTo(false)))
+		assertThat(decoder.bool(forKey: "wasUploaded"), presentAnd(equalTo(false)))
 	}
 
 
