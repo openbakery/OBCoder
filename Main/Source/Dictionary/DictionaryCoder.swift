@@ -8,25 +8,25 @@
 
 import Foundation
 
-open class DictionaryCoder : OBCoder.Coder {
+open class DictionaryCoder: OBCoder.Coder {
 
+	public var dictionary = [String: Any]()
 
-	public var dictionary = [String:Any]()
-	
 	public init() {
 	}
-	
+
 	public func encode(_ encodeable: Encodable) {
 		encodeable.encode(with: self)
 	}
-	
+
 	public func encode(_ string: String, forKey key: String) {
 		self.dictionary[key] = string
 	}
-	
+
 	public func encode(_ boolValue: Bool, forKey key: String) {
+		self.dictionary[key] = boolValue
 	}
-	
+
 	public func encode(_ number: Int, forKey key: String) {
 		self.dictionary[key] = number
 	}
@@ -35,30 +35,29 @@ open class DictionaryCoder : OBCoder.Coder {
 		self.dictionary[key] = number
 	}
 
-
 	public func encode(_ point: CGPoint, forKey key: String) {
-		
+
 		self.dictionary[key] = [
 			"x": point.x,
 			"y": point.y
 		]
-		
+
 	}
-	
+
 	public func encode(_ encodeable: Encodable, forKey key: String) {
 		let coder = DictionaryCoder()
 		encodeable.encode(with: coder)
 		dictionary[key] = coder.dictionary
 	}
-	
+
 	public func encode(_ array: [String], forKey key: String) {
 		self.dictionary[key] = array
 	}
-	
+
 	public func encode(_ array: [Int], forKey key: String) {
 		self.dictionary[key] = array
 	}
-	
+
 	public func encode(_ array: [Encodable], forKey key: String) {
 		var dataArray = [Any]()
 		for encodable in array {
@@ -68,9 +67,8 @@ open class DictionaryCoder : OBCoder.Coder {
 		}
 		self.dictionary[key] = dataArray
 	}
-	
+
 	public func encode(objects: [AnyObject], forKey key: String) {
 	}
-
 
 }
