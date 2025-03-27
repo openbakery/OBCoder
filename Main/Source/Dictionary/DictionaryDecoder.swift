@@ -120,4 +120,7 @@ open class DictionaryDecoder : Decoder {
 		return nil
 	}
 
+	public var keys : [String] {
+		return Array(dictionary.keys)
+	}
 }

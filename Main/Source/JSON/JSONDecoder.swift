@@ -138,4 +138,8 @@ open class JSONDecoder : Decoder {
 		return nil
 	}
 
+	public var keys: [String] {
+		return Array(data.keys)
+	}
+
 }

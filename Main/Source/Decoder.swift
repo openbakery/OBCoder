@@ -31,6 +31,8 @@ public protocol Decoder {
 	func date(forKey key: String) -> Date?
 
 	func dictionary(forKey key: String) -> [String: Any]?
+
+	var keys: [String] { get }
 }
 
 public extension Decoder {

@@ -118,4 +118,8 @@ open class PlistDecoder: OBCoder.Decoder {
 		}
 		return nil
 	}
+
+	public var keys : [String] {
+		return Array(dictionary.keys)
+	}
 }

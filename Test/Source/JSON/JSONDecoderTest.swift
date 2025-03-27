@@ -274,4 +274,11 @@ class JSONDecoderTest: XCTestCase {
 
 	}
 
+	func test_keys() {
+		let decoder = JSONDecoder(jsonString: "{\"x\": 10, \"y\": 11}")
+
+		assertThat(decoder.keys, hasCount(2))
+		assertThat(decoder.keys, hasItem("x"))
+		assertThat(decoder.keys, hasItem("y"))
+	}
 }
