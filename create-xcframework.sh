@@ -46,16 +46,16 @@ build() {
 		-archive $ARCHIVE_DIRECTORY/${FRAMEWORK_NAME}-iOS.xcarchive -framework ${FRAMEWORK_NAME}.framework \
 		-archive $ARCHIVE_DIRECTORY/${FRAMEWORK_NAME}-iOS_Simulator.xcarchive -framework ${FRAMEWORK_NAME}.framework \
 		-archive $ARCHIVE_DIRECTORY/${FRAMEWORK_NAME}-macOS.xcarchive -framework ${FRAMEWORK_NAME}.framework \
-		-output build/xcframework/${FRAMEWORK_NAME}.xcframework
+		-output $ARCHIVE_DIRECTORY/${FRAMEWORK_NAME}.xcframework
 }
 
 
 build "OBCoder"
 
-cp LICENSE build/xcframework
+cp LICENSE $ARCHIVE_DIRECTORY
 mkdir build/xcframework
 
-cd build/xcframework
+cd $ARCHIVE_DIRECTORY
 
 zip -r ../xcframework/$NAME-$VERSION.zip $NAME.xcframework LICENSE
 
