@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
-        "package": "SwiftHamcrest",
+        "package": "swift-syntax",
+        "repositoryURL": "https://github.com/swiftlang/swift-syntax.git",
+        "state": {
+          "branch": null,
+          "revision": "0687f71944021d616d34d922343dcef086855920",
+          "version": "600.0.1"
+        }
+      },
+      {
+        "package": "Hamcrest",
         "repositoryURL": "https://github.com/nschum/SwiftHamcrest/",
         "state": {
           "branch": null,
-          "revision": "8c679c859fd5e12b83aea68a51045b0a11dfddef",
-          "version": "2.2.4"
+          "revision": "669130c2d3191242fe56af092a04d1ca86298d46",
+          "version": "2.3.4"
         }
       }
     ]
