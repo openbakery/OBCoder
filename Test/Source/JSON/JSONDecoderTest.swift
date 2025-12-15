@@ -4,8 +4,9 @@
 //
 
 import Foundation
-import XCTest
 import Hamcrest
+import XCTest
+
 @testable import OBCoder
 
 class JSONDecoderTest: XCTestCase {
@@ -77,11 +78,11 @@ class JSONDecoderTest: XCTestCase {
 	func test_decode_encodeable() {
 		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
 		let coder = JSONCoder()
-		coder.encode(quadrilateral, forKey:"crop")
+		coder.encode(quadrilateral, forKey: "crop")
 
 		let decoder = JSONDecoder(jsonString: coder.jsonString)
 
-		let result = decoder.decode(forKey:"crop") { decoder in
+		let result = decoder.decode(forKey: "crop") { decoder in
 			return Quadrilateral(decoder: decoder)
 		}
 		assertThat(result, presentAnd(instanceOf(Quadrilateral.self)))
@@ -93,7 +94,7 @@ class JSONDecoderTest: XCTestCase {
 
 	func test_decode_array() {
 		let decoder = JSONDecoder(jsonString: "{\"array\": [\"x\", \"y\"]}")
-		let array = decoder.stringArray(forKey:"array")
+		let array = decoder.stringArray(forKey: "array")
 		assertThat(array, presentAnd(hasCount(2)))
 		if let array = array {
 			assertThat(array, hasItem("x"))
@@ -102,7 +103,7 @@ class JSONDecoderTest: XCTestCase {
 
 	func test_decode_int_array() {
 		let decoder = JSONDecoder(jsonString: "{\"array\": [1, 2]}")
-		let array = decoder.intArray(forKey:"array")
+		let array = decoder.intArray(forKey: "array")
 		assertThat(array, presentAnd(hasCount(2)))
 		if let array = array {
 			assertThat(array, hasItem(1))
@@ -113,11 +114,11 @@ class JSONDecoderTest: XCTestCase {
 	func test_decode_encodeable_array() {
 		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
 		let coder = JSONCoder()
-		coder.encode([quadrilateral, quadrilateral], forKey:"crop")
+		coder.encode([quadrilateral, quadrilateral], forKey: "crop")
 
 		let decoder = JSONDecoder(jsonString: coder.jsonString)
 
-		let result = decoder.decodeArray(forKey:"crop") { decoder in
+		let result = decoder.decodeArray(forKey: "crop") { decoder in
 			return Quadrilateral(decoder: decoder)
 		}
 
@@ -132,13 +133,34 @@ class JSONDecoderTest: XCTestCase {
 		}
 	}
 
+	func test_decode_encodeable_array_2() {
+		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
+		let coder = JSONCoder()
+		coder.encode([quadrilateral, quadrilateral], forKey: "crop")
+
+		let decoder = JSONDecoder(jsonString: coder.jsonString)
+
+		let result = decoder.decodeArray(forKey: "crop", type: Quadrilateral.self)
+
+		assertThat(result, present())
+		if let result = result {
+			assertThat(result, hasCount(2))
+			if result.count > 1 {
+				assertThat(result[0].topLeft.x, equalTo(1))
+				assertThat(result[0].topLeft.y, equalTo(1))
+			}
+
+		}
+	}
+
+
 
 	func test_decode_encodable() {
 		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
 		let coder = JSONCoder()
 		coder.encode(quadrilateral)
 		let decoder = OBCoder.JSONDecoder(jsonString: coder.jsonString)
-		let result = decoder.decode(type:Quadrilateral.self)
+		let result = decoder.decode(type: Quadrilateral.self)
 		assertThat(result, presentAnd(instanceOf(Quadrilateral.self)))
 		assertThat(result?.topLeft.x, presentAnd(equalTo(1)))
 		assertThat(result?.topLeft.y, presentAnd(equalTo(1)))
@@ -147,13 +169,13 @@ class JSONDecoderTest: XCTestCase {
 
 	func test_decode_with_default_values() {
 		let decoder = OBCoder.JSONDecoder(jsonString: "{}", defaultValues: ["string": "Test"])
-		assertThat(decoder.string(forKey:"string"), presentAnd(equalTo("Test")))
+		assertThat(decoder.string(forKey: "string"), presentAnd(equalTo("Test")))
 	}
 
 
 	func test_decode_with_default_values_are_overriden() {
 		let decoder = OBCoder.JSONDecoder(jsonString: "{\"string\":\"TestOverriden\"}", defaultValues: ["string": "Test"])
-		assertThat(decoder.string(forKey:"string"), presentAnd(equalTo("TestOverriden")))
+		assertThat(decoder.string(forKey: "string"), presentAnd(equalTo("TestOverriden")))
 	}
 
 
@@ -180,24 +202,25 @@ class JSONDecoderTest: XCTestCase {
 		assertThat(dictionary, presentAnd(instanceOf([String: Any].self)))
 		assertThat(dictionary?["foo"], presentAnd(instanceOfAnd(equalTo("bar"))))
 	}
-	
+
 	func test_decode_tree() {
-		
+
 		// given
-		let decoder = OBCoder.JSONDecoder(jsonString: """
-{ 
-	"foo": {
-		"bar": {
-			"baz": {
-				"id": "1234"
-			}
-		},
-		"bar1": "asdf"
-	}
-}
-""")
-		
-		
+		let decoder = OBCoder.JSONDecoder(
+			jsonString: """
+				{ 
+					"foo": {
+						"bar": {
+							"baz": {
+								"id": "1234"
+							}
+						},
+						"bar1": "asdf"
+					}
+				}
+				""")
+
+
 		let value = decoder.decode(forKey: "foo") { coder1 in
 			coder1.decode(forKey: "bar") { coder2 in
 				coder2.decode(forKey: "baz") { coder3 in
@@ -205,71 +228,74 @@ class JSONDecoderTest: XCTestCase {
 				}
 			}
 		}
-		
+
 		assertThat(value, equalTo("1234"))
 
 	}
 
 
 	func test_decoder_for_key() {
-		
+
 		// given
-		let decoder = OBCoder.JSONDecoder(jsonString: """
-{
-"foo": {
- "bar": {
-	"baz": {
-	 "id": "1234"
-	}
- },
-}
-}
-""")
-		
-		
+		let decoder = OBCoder.JSONDecoder(
+			jsonString: """
+				{
+				"foo": {
+				 "bar": {
+					"baz": {
+					 "id": "1234"
+					}
+				 },
+				}
+				}
+				""")
+
+
 		assertThat(decoder.decoder(forKey: "foo"), presentAnd(instanceOf(OBCoder.JSONDecoder.self)))
 		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar"), presentAnd(instanceOf(OBCoder.JSONDecoder.self)))
-		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar")?.decoder(forKey:"baz")?.string(forKey: "id"), presentAnd(equalTo("1234")))
+		assertThat(decoder.decoder(forKey: "foo")?.decoder(forKey: "bar")?.decoder(forKey: "baz")?.string(forKey: "id"), presentAnd(equalTo("1234")))
 
 	}
 
-	
+
 	func test_decoder_for_key_array() {
-		
+
 		// given
-		let decoder = OBCoder.JSONDecoder(jsonString: """
-{
-"foo": {
- "bar": {
-	"baz": {
-	 "id": "1234"
-	}
- },
-}
-}
-""")
-		
-		
+		let decoder = OBCoder.JSONDecoder(
+			jsonString: """
+				{
+				"foo": {
+				 "bar": {
+					"baz": {
+					 "id": "1234"
+					}
+				 },
+				}
+				}
+				""")
+
+
 		assertThat(decoder.decoder(forKeyPath: ["foo", "bar", "baz"])?.string(forKey: "id"), presentAnd(equalTo("1234")))
 
 	}
-	
+
 	func test_decoder_for_KeyPath() {
-		
+
 		// given
-		let decoder = OBCoder.JSONDecoder(jsonString: """
-{
-"foo": {
- "bar": {
-	"baz": {
-	 "id": "1234"
-	}
- },
-}
-}
-""")
-		
-		
+		let decoder = OBCoder.JSONDecoder(
+			jsonString: """
+				{
+				"foo": {
+				 "bar": {
+					"baz": {
+					 "id": "1234"
+					}
+				 },
+				}
+				}
+				""")
+
+
 		assertThat(decoder.decoder(forKeyPath: "foo", "bar", "baz")?.string(forKey: "id"), presentAnd(equalTo("1234")))
 
 	}
