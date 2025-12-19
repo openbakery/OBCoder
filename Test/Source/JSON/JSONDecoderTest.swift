@@ -166,6 +166,19 @@ class JSONDecoderTest: XCTestCase {
 		assertThat(result?.topLeft.y, presentAnd(equalTo(1)))
 	}
 
+	func test_decode_encodeable_() {
+		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
+		let coder = JSONCoder()
+		coder.encode(quadrilateral, forKey: "crop")
+
+		let decoder = JSONDecoder(jsonString: coder.jsonString)
+
+		let result = decoder.decode(forKey: "crop", type: Quadrilateral.self)
+
+		assertThat(result, present())
+		assertThat(result?.topLeft.x, equalTo(1))
+		assertThat(result?.topLeft.y, equalTo(1))
+	}
 
 	func test_decode_with_default_values() {
 		let decoder = OBCoder.JSONDecoder(jsonString: "{}", defaultValues: ["string": "Test"])

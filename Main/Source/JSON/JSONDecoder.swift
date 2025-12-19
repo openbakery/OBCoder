@@ -5,9 +5,9 @@
 
 import Foundation
 
-open class JSONDecoder : Decoder {
+open class JSONDecoder: Decoder {
 
-	var data : [String: Any]
+	var data: [String: Any]
 
 	public convenience init(jsonString: String) {
 		self.init(jsonString: jsonString, defaultValues: [:])
@@ -37,24 +37,24 @@ open class JSONDecoder : Decoder {
 	}
 
 
-	public func decode<T:Encodable>(type: T.Type) -> T? {
+	public func decode<T: Encodable>(type: T.Type) -> T? {
 		return T(decoder: self)
 	}
 
 
 	public func decoder(forKey key: String) -> Decoder? {
-		if let value = data[key] as? [String : Any]{
-			let decoder = JSONDecoder(data:value)
+		if let value = data[key] as? [String: Any] {
+			let decoder = JSONDecoder(data: value)
 			return decoder
 		}
 		return nil
 	}
 
 	public func decodeArray<T>(forKey key: String, closure: DecodeClosure<T>) -> [T]? {
-		if let dataArray = data[key] as? [[String : Any]] {
+		if let dataArray = data[key] as? [[String: Any]] {
 			var resultArray = [T]()
 			for data in dataArray {
-				let decoder = JSONDecoder(data:data)
+				let decoder = JSONDecoder(data: data)
 				if let object = closure(decoder) {
 					resultArray.append(object)
 				}
@@ -130,7 +130,7 @@ open class JSONDecoder : Decoder {
 		}
 		return nil
 	}
-	
+
 	public func dictionary(forKey key: String) -> [String: Any]? {
 		if let result = data[key] as? [String: Any] {
 			return result

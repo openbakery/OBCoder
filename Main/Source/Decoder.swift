@@ -44,6 +44,13 @@ extension Decoder {
 		return nil
 	}
 
+	public func decode<T: Encodable>(forKey key: String, type: T.Type) -> T? {
+		if let decoder = self.decoder(forKey: key) {
+			return T(decoder: decoder)
+		}
+		return nil
+	}
+
 	public func decodeArray<T: Encodable>(forKey key: String, type: T.Type) -> [T]? {
 		return self.decodeArray(forKey: key) { decoder in
 			return T(decoder: decoder)
