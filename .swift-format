@@ -1,14 +1,22 @@
 {
 	"version": 1,
-		"lineLength": 200,
-		"indentation": {
-			"tabs": 1
-		},
-		"tabWidth": 2,
-		"maximumBlankLines": 3,
-		"respectsExistingLineBreaks": true,
-		"lineBreakBeforeControlFlowKeywords": false,
-		"lineBreakBeforeEachArgument": false,
-		"multiElementCollectionTrailingCommas": false,
-		"indentBlankLines": false
+	"lineLength": 200,
+	"indentation": {
+		"tabs": 1
+	},
+	"braces": false,
+	"wrapMultilineStatementBraces": false,
+	"tabWidth": 2,
+	"maximumBlankLines": 3,
+	"respectsExistingLineBreaks": true,
+	"lineBreakBeforeControlFlowKeywords": false,
+	"lineBreakBeforeEachArgument": false,
+	"multiElementCollectionTrailingCommas": false,
+	"indentBlankLines": false,
+	"indentSwitchCaseLabels": true,
+	"rules" : {
+		 "DoNotUseSemicolons": false,
+		 "OrderedImports": true,
+		 "TypeNamesShouldBeCapitalized": true
+	}
 }

@@ -14,7 +14,11 @@ class PlistDecoderTest: PlistCoder_Base_Test {
 	func decoder(dictionary: [String: Any]) -> PlistDecoder? {
 		let plistString = self.plistString(data: dictionary)
 		if let data = plistString.data(using: .utf8) {
-			return PlistDecoder(data: data)
+            do {
+                return try PlistDecoder(data: data)
+            } catch {
+                return nil
+            }
 		}
 		return nil
 	}
@@ -129,7 +133,7 @@ class PlistDecoderTest: PlistCoder_Base_Test {
 		let data = try XCTUnwrap(coder.data)
 
 		// when
-		let decoder = PlistDecoder(data: data)
+		let decoder = try PlistDecoder(data: data)
 
 		let result = decoder.decode(forKey: "crop") { decoder in
 			return Quadrilateral(decoder: decoder)
@@ -150,7 +154,7 @@ class PlistDecoderTest: PlistCoder_Base_Test {
 		let data = try XCTUnwrap(coder.data)
 
 		// when
-		let decoder = PlistDecoder(data: data)
+		let decoder = try PlistDecoder(data: data)
 		let result = decoder.decodeArray(forKey: "crop") { decoder in
 			return Quadrilateral(decoder: decoder)
 		}
@@ -175,7 +179,7 @@ class PlistDecoderTest: PlistCoder_Base_Test {
 		let data = try XCTUnwrap(coder.data)
 
 		// when
-		let decoder = PlistDecoder(data: data)
+		let decoder = try PlistDecoder(data: data)
 
 		// when
 		let result = decoder.decode(type: Quadrilateral.self)
@@ -199,7 +203,7 @@ class PlistDecoderTest: PlistCoder_Base_Test {
 		coder.encode(["Foo":"Bar"], forKey: "dictionary")
 		let data = try XCTUnwrap(coder.xmlString?.data(using:.utf8))
 		
-		let decoder = PlistDecoder(data: data)
+		let decoder = try PlistDecoder(data: data)
 
 		// then
 		assertThat(decoder.dictionary(forKey: "dictionary"), presentAnd(instanceOf([String: Any].self)))

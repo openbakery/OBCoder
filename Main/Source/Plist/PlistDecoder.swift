@@ -10,16 +10,12 @@ open class PlistDecoder: OBCoder.Decoder {
 
 	let dictionary: [String: Any]
 
-	public init(data: Data) {
-		do {
+	public init(data: Data) throws {
 			if let dictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any] {
 				self.dictionary = dictionary
 			} else {
 				self.dictionary = [:]
 			}
-		} catch {
-			self.dictionary = [:]
-		}
 	}
 
 	init(dictionary: [String: Any]) {
