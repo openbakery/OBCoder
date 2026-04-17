@@ -9,7 +9,7 @@ import Foundation
 
 @testable import OBCoder
 
-public struct Quadrilateral: Encodable, Equatable {
+public struct Quadrilateral: Encodable, Equatable, Sendable {
 
     public enum Corner: Int {
         case topLeft = 0
