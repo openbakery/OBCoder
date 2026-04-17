@@ -14,7 +14,7 @@ open class JSONDecoder: Decoder {
 	}
 
 	public convenience init(fileURL: URL) throws {
-		let jsonString = try String(contentsOf: fileURL)
+		let jsonString = try String(contentsOf: fileURL, encoding: .utf8)
 		self.init(jsonString: jsonString)
 	}
 
