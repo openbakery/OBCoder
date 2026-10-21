@@ -12,12 +12,17 @@ import Foundation
 
 class SimpleEncodable: OBCoder.Encodable {
 	func encode(with coder: OBCoder.Coder) {
-		coder.encode("value", forKey: "key")
+		coder.encode(value, forKey: "key")
 	}
 	
-	init() {
+	init(value: String = "value") {
+		self.value = value
 	}
+	
+	let value: String
 	
 	required init?(decoder: OBCoder.Decoder) {
+		guard let value = decoder.string(forKey: "key") else { return nil }
+		self.value = value
 	}
 }

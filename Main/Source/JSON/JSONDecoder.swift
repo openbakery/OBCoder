@@ -36,6 +36,32 @@ open class JSONDecoder: Decoder {
 		self.data = data
 	}
 
+	public static func decodeArray<T>(jsonString: String, closure: DecodeClosure<T>) -> [T]? {
+		guard let jsonData = jsonString.data(using: .utf8) else { return nil }
+		do {
+			guard let items = try JSONSerialization.jsonObject(with: jsonData) as? [[String: Any]] else { return nil }
+			var result = [T]()
+			for item in items {
+
+				if let object = closure(JSONDecoder(data: item)) {
+					result.append(object)
+				}
+
+			}
+			return result
+
+		} catch {
+			// ignore
+		}
+		return nil
+	}
+	
+	public static func decodeArray<T: Encodable>(jsonString: String, type: T.Type) -> [T]? {
+		return self.decodeArray(jsonString: jsonString) { decoder in
+			T(decoder: decoder)
+		}	
+	}
+
 
 	public func decode<T: Encodable>(type: T.Type) -> T? {
 		return T(decoder: self)

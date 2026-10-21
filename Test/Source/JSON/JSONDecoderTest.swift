@@ -320,4 +320,41 @@ class JSONDecoderTest: XCTestCase {
 		assertThat(decoder.keys, hasItem("x"))
 		assertThat(decoder.keys, hasItem("y"))
 	}
+
+	func test_decoder_root_array() {
+		let jsonString = """
+			[
+				{"key": "1"},
+				{"key": "2"},
+			]
+			"""
+
+		// when
+		let items = JSONDecoder.decodeArray(jsonString: jsonString) { decoder in
+			SimpleEncodable(decoder: decoder)
+		}
+
+		// then
+		assertThat(items, presentAnd(hasCount(2)))
+		assertThat(items?.first?.value, presentAnd(equalTo("1")))
+		assertThat(items?.last?.value, presentAnd(equalTo("2")))
+	}
+	
+	func test_decoder_root_array_2() {
+		let jsonString = """
+			[
+				{"key": "1"},
+				{"key": "2"},
+			]
+			"""
+
+		// when
+		let items = JSONDecoder.decodeArray(jsonString: jsonString, type: SimpleEncodable.self)
+
+
+		// then
+		assertThat(items, presentAnd(hasCount(2)))
+		assertThat(items?.first?.value, presentAnd(equalTo("1")))
+		assertThat(items?.last?.value, presentAnd(equalTo("2")))
+	}
 }
