@@ -13,7 +13,7 @@ open class JSONCoder: Coder {
 	public var jsonString: String {
 		get {
 			do {
-				let jsonData = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+				let jsonData = try JSONSerialization.data(withJSONObject: data, options:  [.sortedKeys, .prettyPrinted])
 				if let result = String(data: jsonData, encoding: .utf8) {
 					return result
 				}

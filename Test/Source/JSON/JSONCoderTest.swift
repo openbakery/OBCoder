@@ -124,7 +124,28 @@ class JSONCoderTest: XCTestCase {
 		assertThat(coder.jsonString, hasSuffix("}"))
 
 	}
- 
+
+	func test_encode_dictionary_alphabetical() throws {
+
+		let dictionary = [
+			"c": "c",
+			"b": "b",
+			"e": "e",
+			"a": "a"
+		]
+
+		// when
+		coder.encode(dictionary, forKey: "dictionary")
+
+		// then
+		assertThat(coder.jsonString, containsString("\"a\" : \"a\",\n    \"b"))
+		assertThat(coder.jsonString, containsString("\"b\" : \"b\",\n    \"c"))
+		assertThat(coder.jsonString, containsString("\"c\" : \"c\",\n    \"e"))
+		assertThat(coder.jsonString, hasSuffix("}"))
+
+	}
+
+
 
 	func test_encode_encodable_dictionary() {
 
