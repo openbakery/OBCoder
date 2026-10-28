@@ -10,25 +10,21 @@ open class PlistCoder: OBCoder.Coder {
 	var dictionary = [String: Any]()
 
 	public var xmlString: String? {
-		get {
-			if let data = self.data {
-				if let result = String(data: data, encoding: .utf8) {
-					return result
-				}
+		if let data = self.data {
+			if let result = String(data: data, encoding: .utf8) {
+				return result
 			}
-			return nil
 		}
+		return nil
 	}
 
 	public var data: Data? {
-		get {
-			do {
-				return try PropertyListSerialization.data(fromPropertyList: dictionary, format: PropertyListSerialization.PropertyListFormat.xml, options: 0)
-			} catch {
-				// nil is returned when the plist could not be created
-			}
-			return nil
+		do {
+			return try PropertyListSerialization.data(fromPropertyList: dictionary, format: PropertyListSerialization.PropertyListFormat.xml, options: 0)
+		} catch {
+			// nil is returned when the plist could not be created
 		}
+		return nil
 	}
 
 	public func encode(_ encodable: Encodable) {
@@ -52,11 +48,12 @@ open class PlistCoder: OBCoder.Coder {
 	}
 
 	public func encode(_ point: CGPoint, forKey key: String) {
-		dictionary[key] = [
-			"class": "CGPoint",
-			"x": point.x,
-			"y": point.y,
-		] as [String : Any]
+		dictionary[key] =
+			[
+				"class": "CGPoint",
+				"x": point.x,
+				"y": point.y
+			] as [String: Any]
 	}
 
 	public func encode(_ encodable: Encodable, forKey key: String) {
@@ -82,12 +79,22 @@ open class PlistCoder: OBCoder.Coder {
 		}
 		self.dictionary[key] = dataArray
 	}
-	
+
 	public func encode(_ dict: [String: Any], forKey key: String) {
 		self.dictionary[key] = dict
 	}
 
 	public func encode(objects: [AnyObject], forKey key: String) {
+	}
+
+	public func encode(dictionary: [String: Encodable], forKey key: String) {
+		var encodedDictionary = [String: Any]()
+		for (key, encodable) in dictionary {
+			let coder = PlistCoder()
+			encodable.encode(with: coder)
+			encodedDictionary[key] = coder.dictionary
+		}
+		self.dictionary[key] = encodedDictionary
 	}
 
 

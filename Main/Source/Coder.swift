@@ -22,6 +22,7 @@ public protocol Coder {
 	func encode(_ array: [Encodable], forKey key: String)
 	func encode(objects: [AnyObject], forKey key: String)
 	func encode(_ date: Date, forKey key: String)
+	func encode(dictionary: [String: Encodable], forKey key: String)
 
 }
 

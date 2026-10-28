@@ -4,14 +4,14 @@
 //
 
 import Foundation
-import XCTest
 import Hamcrest
+import XCTest
+
 @testable import OBCoder
 
+class JSONCoderTest: XCTestCase {
 
-class JSONCoderTest : XCTestCase {
-
-	var coder : JSONCoder!
+	var coder: JSONCoder!
 
 	override func setUp() {
 		super.setUp()
@@ -37,20 +37,20 @@ class JSONCoderTest : XCTestCase {
 	}
 
 	func test_encode_int() {
-		coder.encode(1, forKey:"value")
+		coder.encode(1, forKey: "value")
 		assertThat(coder.jsonString, containsString("\"value\" : 1"))
 	}
 
 
 	func test_encode_float() {
-		coder.encode(1.1, forKey:"value")
+		coder.encode(1.1, forKey: "value")
 		assertThat(coder.jsonString, containsString("\"value\" : 1.1"))
 	}
 
 
 	func test_encode_point() {
 		let point = CGPoint(x: 10, y: 11)
-		coder.encode(point, forKey:"point")
+		coder.encode(point, forKey: "point")
 		assertThat(coder.jsonString, containsString("\"point\" : {\n    \""))
 		assertThat(coder.jsonString, containsString("\"y\" : 11"))
 		assertThat(coder.jsonString, containsString("\"x\" : 10"))
@@ -59,25 +59,25 @@ class JSONCoderTest : XCTestCase {
 
 	func test_encode_encodeable() {
 		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
-		coder.encode(quadrilateral, forKey:"crop")
+		coder.encode(quadrilateral, forKey: "crop")
 		assertThat(coder.jsonString, containsString("\"crop\" : {\n    \""))
 		assertThat(coder.jsonString, containsString("\"topLeft\" : "))
 	}
 
 	func test_encode_array() {
-		coder.encode(["first", "second"], forKey:"array")
+		coder.encode(["first", "second"], forKey: "array")
 		assertThat(coder.jsonString, containsString("\"array\" : [\n    \"first\",\n    \"second\"\n  ]"))
 	}
 
 
 	func test_encode_int_array() {
-		coder.encode([1, 2], forKey:"array")
+		coder.encode([1, 2], forKey: "array")
 		assertThat(coder.jsonString, containsString("\"array\" : [\n    1,\n    2\n  ]"))
 	}
 
 	func test_encode_encodeable_array() {
 		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
-		coder.encode([quadrilateral, quadrilateral], forKey:"array")
+		coder.encode([quadrilateral, quadrilateral], forKey: "array")
 		assertThat(coder.jsonString, containsString("\"array\" : [\n    {\n      \""))
 		assertThat(coder.jsonString, containsString("\"bottomLeft"))
 	}
@@ -110,11 +110,11 @@ class JSONCoderTest : XCTestCase {
 		// then
 		assertThat(coder.jsonString, containsString("\"date\" : \"2021-10-27T08:27:00Z\""))
 	}
-	
+
 	func test_encode_dictionary() throws {
-		
+
 		let dictionary = ["foo": "bar"]
-		
+
 		// when
 		coder.encode(dictionary, forKey: "dictionary")
 
@@ -122,7 +122,27 @@ class JSONCoderTest : XCTestCase {
 		assertThat(coder.jsonString, containsString("\"dictionary\" : {"))
 		assertThat(coder.jsonString, containsString("\"foo\" : \"bar\""))
 		assertThat(coder.jsonString, hasSuffix("}"))
-		
+
 	}
+ 
+
+	func test_encode_encodable_dictionary() {
+
+		// given
+		let simple = SimpleEncodable()
+		let dictionary = ["foo": simple]
+
+		// when
+		coder.encode(dictionary: dictionary, forKey: "dictionary")
+
+		// then
+		assertThat(coder.jsonString, containsString("\"dictionary\" : {"))
+		assertThat(coder.jsonString, containsString("\"foo\" : {"))
+		assertThat(coder.jsonString, containsString("\"key\" : \"value\"\n    }"))
+		assertThat(coder.jsonString, hasSuffix("}"))
+
+	}
+
+
 
 }

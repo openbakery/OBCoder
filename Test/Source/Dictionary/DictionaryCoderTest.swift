@@ -7,13 +7,14 @@
 //
 
 import Foundation
-import XCTest
 import Hamcrest
+import XCTest
+
 @testable import OBCoder
 
-class DictionaryCoderTest : XCTestCase {
+class DictionaryCoderTest: XCTestCase {
 
-	var coder : DictionaryCoder!
+	var coder: DictionaryCoder!
 
 	override func setUp() {
 		super.setUp()
@@ -66,7 +67,7 @@ class DictionaryCoderTest : XCTestCase {
 
 	func test_encode_point() {
 		let point = CGPoint(x: 10, y: 11)
-		coder.encode(point, forKey:"point")
+		coder.encode(point, forKey: "point")
 		if let pointDictionary = coder.dictionary["point"] as? [String: Double] {
 			assertThat(pointDictionary, hasEntry("x", 10))
 			assertThat(pointDictionary, hasEntry("y", 11))
@@ -78,7 +79,7 @@ class DictionaryCoderTest : XCTestCase {
 
 	func test_encode_encodeable() {
 		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
-		coder.encode(quadrilateral, forKey:"crop")
+		coder.encode(quadrilateral, forKey: "crop")
 		if let cropDictionary = coder.dictionary["crop"] as? [String: Any] {
 			if let topLeft = cropDictionary["topLeft"] as? [String: Double] {
 				assertThat(topLeft, hasEntry("x", 1))
@@ -93,7 +94,7 @@ class DictionaryCoderTest : XCTestCase {
 
 
 	func test_encode_array() {
-		coder.encode(["first", "second"], forKey:"array")
+		coder.encode(["first", "second"], forKey: "array")
 		if let value = coder.dictionary["array"] as? [String] {
 			assertThat(value, hasItem("first"))
 			assertThat(value, hasItem("second"))
@@ -103,7 +104,7 @@ class DictionaryCoderTest : XCTestCase {
 	}
 
 	func test_encode_int_array() {
-		coder.encode([1, 2], forKey:"array")
+		coder.encode([1, 2], forKey: "array")
 		if let value = coder.dictionary["array"] as? [Int] {
 			assertThat(value, hasItem(1))
 			assertThat(value, hasItem(2))
@@ -115,7 +116,7 @@ class DictionaryCoderTest : XCTestCase {
 
 	func test_encode_encodeable_array() {
 		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
-		coder.encode([quadrilateral, quadrilateral], forKey:"array")
+		coder.encode([quadrilateral, quadrilateral], forKey: "array")
 
 		if let value = coder.dictionary["array"] as? [Any] {
 
@@ -176,9 +177,9 @@ class DictionaryCoderTest : XCTestCase {
 		// then
 		let value = coder.dictionary["date"]
 		assertThat(value, present())
-		assertThat(value, presentAnd(instanceOf(String.self, and:equalTo("2021-10-27T08:27:00Z"))))
+		assertThat(value, presentAnd(instanceOf(String.self, and: equalTo("2021-10-27T08:27:00Z"))))
 	}
-	
+
 	func test_encode_boolean() throws {
 		// given
 
@@ -189,4 +190,20 @@ class DictionaryCoderTest : XCTestCase {
 		let value = coder.dictionary["bool"]
 		assertThat(value, presentAnd(instanceOfAnd(equalTo(true))))
 	}
+
+
+	func test_encodeDictionary() throws {
+		// given
+		let simple = SimpleEncodable()
+		let dictionary = ["foo": simple]
+
+		// when
+		coder.encode(dictionary: dictionary, forKey: "dictionary")
+
+		// then
+		let value = coder.dictionary["dictionary"] as? [String: Any]
+		let encodedDictionary = value?["foo"] as? [String: String]
+		assertThat(encodedDictionary?["key"], presentAnd(instanceOfAnd(equalTo("value"))))
+	}
+
 }

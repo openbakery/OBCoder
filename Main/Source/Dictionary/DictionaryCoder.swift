@@ -71,4 +71,17 @@ open class DictionaryCoder: OBCoder.Coder {
 	public func encode(objects: [AnyObject], forKey key: String) {
 	}
 
+
+	public func encode(dictionary: [String: Encodable], forKey key: String) {
+		var encodedDictionary = [String: Any]()
+		for (key, encodable) in dictionary {
+			let coder = DictionaryCoder()
+			encodable.encode(with: coder)
+			encodedDictionary[key] = coder.dictionary
+		}
+		self.dictionary[key] = encodedDictionary
+	}
+
+
+
 }

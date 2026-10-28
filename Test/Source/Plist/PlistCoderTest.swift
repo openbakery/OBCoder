@@ -4,14 +4,14 @@
 //
 
 import Foundation
-import XCTest
 import Hamcrest
-@testable import OBCoder
+import XCTest
 
+@testable import OBCoder
 
 class PlistCoderTest: PlistCoder_Base_Test {
 
-	var coder : PlistCoder!
+	var coder: PlistCoder!
 
 	override func setUp() {
 		super.setUp()
@@ -98,7 +98,7 @@ class PlistCoderTest: PlistCoder_Base_Test {
 
 	func test_encode_point() {
 		let point = CGPoint(x: 10, y: 11)
-		coder.encode(point, forKey:"point")
+		coder.encode(point, forKey: "point")
 
 		// then
 		let plistString = self.plistString(data: ["point": point])
@@ -108,7 +108,7 @@ class PlistCoderTest: PlistCoder_Base_Test {
 
 
 	func test_encode_string_array() {
-		coder.encode(["first", "second"], forKey:"array")
+		coder.encode(["first", "second"], forKey: "array")
 
 		// then
 		let plistString = self.plistString(data: ["array": ["first", "second"]])
@@ -117,19 +117,18 @@ class PlistCoderTest: PlistCoder_Base_Test {
 
 
 	func test_encode_int_array() {
-		coder.encode([1,2,3], forKey:"array")
+		coder.encode([1, 2, 3], forKey: "array")
 
 		// then
-		let plistString = self.plistString(data: ["array": [1,2,3]])
+		let plistString = self.plistString(data: ["array": [1, 2, 3]])
 		assertThat(coder.xmlString, presentAnd(equalTo(plistString)))
 	}
 
 
 
-
 	func test_encode_encodable() {
 		let quadrilateral = Quadrilateral(topLeft: CGPoint(x: 1, y: 1), topRight: CGPoint(x: 5, y: 1), bottomLeft: CGPoint(x: 2, y: 5), bottomRight: CGPoint(x: 6, y: 6))
-		coder.encode(quadrilateral, forKey:"crop")
+		coder.encode(quadrilateral, forKey: "crop")
 
 		// then
 		let topLeft = self.plistValue(key: "topLeft", value: CGPoint(x: 1, y: 1), level: 1)
@@ -148,11 +147,11 @@ class PlistCoderTest: PlistCoder_Base_Test {
 		let topLeft = self.plistValue(key: "topLeft", value: CGPoint(x: 1, y: 1), level: 2)
 		assertThat(coder.xmlString, presentAnd(containsString(topLeft)))
 		let expectedString = """
-	<key>array</key>
-	<array>
-		<dict>
-			<key>bottomLeft</key>
-"""
+				<key>array</key>
+				<array>
+					<dict>
+						<key>bottomLeft</key>
+			"""
 		assertThat(coder.xmlString, presentAnd(containsString(expectedString)))
 
 	}
@@ -181,17 +180,41 @@ class PlistCoderTest: PlistCoder_Base_Test {
 
 
 	func test_encode_dictionary() {
-		
+
 		coder.encode(["foo": "bar"], forKey: "dict")
 
 		// then
 		let expectedString = """
-	<key>dict</key>
-	<dict>
-		<key>foo</key>
-		<string>bar</string>
-	</dict>
-"""
+				<key>dict</key>
+				<dict>
+					<key>foo</key>
+					<string>bar</string>
+				</dict>
+			"""
+		assertThat(coder.xmlString, presentAnd(containsString(expectedString)))
+
+	}
+
+	func test_encode_encodable_dictionary() {
+
+		// given
+		let simple = SimpleEncodable()
+		let dictionary = ["foo": simple]
+
+		// when
+		coder.encode(dictionary: dictionary, forKey: "dictionary")
+
+		// then
+		let expectedString = """
+				<key>dictionary</key>
+				<dict>
+					<key>foo</key>
+					<dict>
+						<key>key</key>
+						<string>value</string>
+					</dict>
+				</dict>
+			"""
 		assertThat(coder.xmlString, presentAnd(containsString(expectedString)))
 
 	}
